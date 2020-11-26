@@ -1,11 +1,9 @@
-const mongoose=require('mongoose')
+const express=require('express');
+const controllers=require('./controllers/signup.js');
 
-const schema=new mongoose.Schema({
-    fname:{type:String,required:true},
-    lname:{type:String,required:true},
-    email:{type:String,required:true,unique:true},
-    phoneno:{type:String,required:true,min:10},
-    branchid:{type:String,min:0,default:0}
-})
 
-module.exports=mongoose.model('signup1',schema);
+const app=express.Router();
+app.post('/signup',controllers.signup);
+app.post('/login',controllers.login);
+
+module.exports=app; 
